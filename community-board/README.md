@@ -4,7 +4,7 @@ Submitted by: **Ammar Khalil**
 
 This web app: **An event/resource board that serves as a local staple for the Bay Shore, NY region.**
 
-Time spent: **4** hours spent in total
+Time spent: **5.5** hours spent in total
 
 ## Required Features
 
@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [X] Card filter functionality
 
 ## Video Walkthrough
 
@@ -44,7 +44,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One challenge was mapping county data from the JSON file onto individual cards using .map(). Instead of using generic keys, I used county names for clearer identification. Styling the images consistently across cards was also tricky due to varying dimensions, but I resolved this with CSS techniques like clamp() to keep headings and layouts uniform. The most complex part was implementing sorting: I used React’s useState to track the selected option, then applied a switch statement to sort and re-render the county cards based on the chosen criteria.
 
 ## License
 
