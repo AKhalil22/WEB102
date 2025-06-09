@@ -1,0 +1,82 @@
+[
+  {
+    "name": "New York County (Manhattan)",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/960px-Above_Gotham.jpg",
+    "population": 1628706,
+    "medianIncome": 104553,
+    "bachelorPercent": 67.0,
+    "link": "https://www.census.gov/quickfacts/newyorkcountymanhattanboroughnewyork"
+  },
+  {
+    "name": "Kings County (Brooklyn)",
+    "image": "https://asliceofbrooklyn.com/wp-content/uploads/2019/10/Screen-Shot-2017-12-10-at-6.50.16-PM.png",
+    "population": 2736074,
+    "medianIncome": 78548,
+    "bachelorPercent": 43.5,
+    "link": "https://www.census.gov/quickfacts/kingscountynewyork"
+  },
+  {
+    "name": "Queens County",
+    "image": "https://www.nyctourism.com/_next/image/?url=https://images.ctfassets.net/1aemqu6a6t65/3qt6vvWW8M66ESsnfhkbYK/398044e11c0c7c7a0d3636eba992ae1d/35-St-Astoria-Queens-NYC-Scott-Rossi.jpg&w=1920&q=75",
+    "population": 2405464,
+    "medianIncome": 71571,
+    "bachelorPercent": 34.8,
+    "link": "https://www.census.gov/quickfacts/queenscountynewyork"
+  },
+  {
+    "name": "Bronx County",
+    "image": "https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2019-04/bd3f1b044852187e4d6778f5ff0fc7fe.jpeg?h=9c2070a3&itok=Vo9zK16T",
+    "population": 1433786,
+    "medianIncome": 46323,
+    "bachelorPercent": 22.9,
+    "link": "https://www.census.gov/quickfacts/bronxcountynewyork"
+  },
+  {
+    "name": "Richmond County (Staten Island)",
+    "image": "https://www.richmondcountycc.org/custom/mobile/images/hp_header.jpg",
+    "population": 495747,
+    "medianIncome": 83265,
+    "bachelorPercent": 46.1,
+    "link": "https://www.census.gov/quickfacts/richmondcountynewyork"
+  },
+  {
+    "name": "Nassau County",
+    "image": "https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/gaxmd21uskjgukr4qhfp",
+    "population": 1356924,
+    "medianIncome": 120036,
+    "bachelorPercent": 45.8,
+    "link": "https://www.census.gov/quickfacts/nassaucountynewyork"
+  },
+  {
+    "name": "Suffolk County",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Montauk_01.jpg/1280px-Montauk_01.jpg",
+    "population": 1512471,
+    "medianIncome": 112430,
+    "bachelorPercent": 38.4,
+    "link": "https://www.census.gov/quickfacts/suffolkcountynewyork"
+  },
+  {
+    "name": "Westchester County",
+    "image": "https://res.cloudinary.com/simpleview/image/upload/v1522708485/clients/westchesterny/shutterstock_17561584_2_1__7ba50612-6edf-414f-ab1b-75a814827096.jpg",
+    "population": 999723,
+    "medianIncome": 115984,
+    "bachelorPercent": 52.3,
+    "link": "https://www.census.gov/quickfacts/westchestercountynewyork"
+  },
+  {
+    "name": "Albany County",
+    "image": "https://travelhudsonvalley.com/wp-content/uploads/bb-plugin/cache/Albany-John-Boyd-Thacher-State-Park-square-003d71d5c2fd9ef5cda2c6eb8eb626b2-0j7a3evhrbyt.jpg",
+    "population": 313743,
+    "medianIncome": 71855,
+    "bachelorPercent": 42.2,
+    "link": "https://www.census.gov/quickfacts/albanycountynewyork"
+  },
+  {
+    "name": "Monroe County",
+    "image": "https://www.fingerlakestravelny.com/wp-content/uploads/Rochester_s_High_Falls_with_rainbow_Sz_3kzryoBSoTtquYIfmhrt18q0ABlZBh_cmyk_l_781ac130-4c1f-412d-a2ff-2a41017ebdaf.jpg",
+    "population": 752035,
+    "medianIncome": 65280,
+    "bachelorPercent": 35.7,
+    "link": "https://www.census.gov/quickfacts/monroecountynewyork"
+  }
+]
