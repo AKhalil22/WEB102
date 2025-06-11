@@ -4,7 +4,7 @@ Submitted by: **Ammar Khalil**
 
 This web app: **An interactive tool for exploring population, income, and education data for counties in the NY metro region.**
 
-Time spent: **5.5** hours spent in total
+Time spent: **6** hours spent in total
 
 ## Required Features
 
