@@ -1,8 +1,8 @@
-# Web Development Project 1 - *Community Board*
+# Web Development Project 1 - *New York Counties*
 
 Submitted by: **Ammar Khalil**
 
-This web app: **An event/resource board that serves as a local staple for the Bay Shore, NY region.**
+This web app: **An interactive tool for exploring population, income, and education data for counties in the NY metro region.**
 
 Time spent: **5.5** hours spent in total
 
@@ -33,10 +33,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='community-board/src/assets/VideoDemo.gif' title='Video Walkthrough' width=100% alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created using macOS screen recording and Canva.
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
