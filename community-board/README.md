@@ -33,7 +33,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='community-board/src/assets/VideoDemo.gif' title='Video Walkthrough' width=100% alt='Video Walkthrough' />
+<img src='src/assets/VideoDemo.gif' title='Video Walkthrough' width=100% alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created using macOS screen recording and Canva.
@@ -44,7 +44,10 @@ GIF created using macOS screen recording and Canva.
 
 ## Notes
 
-One challenge was mapping county data from the JSON file onto individual cards using .map(). Instead of using generic keys, I used county names for clearer identification. Styling the images consistently across cards was also tricky due to varying dimensions, but I resolved this with CSS techniques like clamp() to keep headings and layouts uniform. The most complex part was implementing sorting: I used React’s useState to track the selected option, then applied a switch statement to sort and re-render the county cards based on the chosen criteria.
+Challenges/Learning Curves:
+- Mapping county data from the JSON file to individual cards using `.map()` required careful handling; using county names improved clarity.
+- Ensuring consistent image styling across cards was tricky due to different image dimensions, but CSS techniques like `clamp()` helped keep headings and layouts uniform.
+- Implementing sorting was the most complex part: I used React’s `useState` to track the selected option and implemented a custom switch statement to sort and re-render the county cards based on the chosen criteria.
 
 ## License
 
