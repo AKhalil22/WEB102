@@ -31,6 +31,38 @@
   min-height: 300px;
 }
 
+.flashcard-content {
+  position: relative;
+  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+/* When parent div has class attribute '.flashcard.flipped' preform the 
+  below transformation on the 'flashcard-content' div */
+.flashcard.flipped .flashcard-content {
+  transform: rotateY(360deg);
+}
+
+.flashcard-text {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 20vh;
+  font-size: 22px;
+  padding: 0 1em;
+}
+.tags-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+.tag {
+  background-color: gray;
+  border-radius: 22px;
+  padding: 0.25em 0.75em;
+}
+
 /* ========== Navigation Styles (Child) ========== */
 .nav-container {
   width: 30vw;

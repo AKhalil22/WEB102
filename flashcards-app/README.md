@@ -4,38 +4,40 @@ Submitted by: **Ammar Khalil**
 
 This web app: **insert description**
 
-Time spent: **2.5** hours spent in total
+Time spent: **7** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
 
-- [ ] **The app displays the title of the card set, a short description, and the total number of cards**
-  - [ ] Title of card set is displayed 
-  - [ ] A short description of the card set is displayed 
-  - [ ] A list of card pairs is created
+- [X] **The app displays the title of the card set, a short description, and the total number of cards**
+  - [X] Title of card set is displayed 
+  - [X] A short description of the card set is displayed 
+  - [X] A list of card pairs is created
   - [ ] The total number of cards in the set is displayed 
-  - [ ] Card set is represented as a list of card pairs (an array of dictionaries where each dictionary contains the question and answer is perfectly fine)
-- [ ] **A single card at a time is displayed**
-  - [ ] Only one half of the information pair is displayed at a time
-- [ ] **Clicking on the card flips the card over, showing the corresponding component of the information pair**
-  - [ ] Clicking on a card flips it over, showing the back with corresponding information 
-  - [ ] Clicking on a flipped card again flips it back, showing the front
-- [ ] **Clicking on the next button displays a random new card**
+  - [X] Card set is represented as a list of card pairs (an array of dictionaries where each dictionary contains the question and answer is perfectly fine)
+- [X] **A single card at a time is displayed**
+  - [X] Only one half of the information pair is displayed at a time
+- [X] **Clicking on the card flips the card over, showing the corresponding component of the information pair**
+  - [X] Clicking on a card flips it over, showing the back with corresponding information 
+  - [X] Clicking on a flipped card again flips it back, showing the front
+- [X] **Clicking on the next button displays a random new card**
 
 The following **optional** features are implemented:
 
 - [ ] Cards contain images in addition to or in place of text
   - [ ] Some or all cards have images in place of or in addition to text
-- [ ] Cards have different visual styles such as color based on their category
+- [X] Cards have different visual styles such as color based on their category
   - Example categories you can use:
     - Difficulty: Easy/medium/hard
     - Subject: Biology/Chemistry/Physics/Earth science
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [X] LeetCode Style Tagging!
+* [X] Multilevel Categorization
+* [X] Company Specfic Questions
 
 ## Video Walkthrough
 
@@ -52,7 +54,11 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Main challenges were initializing state variables and handling user interactions.
+- Implementing a carousel effect for card navigation required modulus logic for seamless wrap-around.
+- Applying the `useEffect` hook was key, especially for filtering cards by category and difficulty.
+- Explored CSS Grid and Flexbox for styling, ultimately preferring Flexbox for its simplicity.
+- This project deepened my understanding of React state, hooks, and modern CSS layouts.
 
 ## License
 
