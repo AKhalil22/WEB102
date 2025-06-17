@@ -1,0 +1,72 @@
+[
+  {
+    "question": "When was BNY Mellon founded?",
+    "answer": "BNY Mellon was founded in 1784 by Alexander Hamilton.",
+    "categories": ["Company Knowledge"],
+    "difficulty": "Easy",
+    "color": "Blue"
+  },
+  {
+    "question": "Describe a time you demonstrated leadership or took initiative.",
+    "answer": "Use STAR: Describe the situation, the task, your action, and the result. Highlight your role as the one who stepped up, organized, or initiated.",
+    "categories": ["Behavioral", "Leadership/Initiative", "STAR"],
+    "difficulty": "Medium",
+    "color": "Green"
+  },
+  {
+    "question": "How does BNY incorporate Responsible AI into its strategy?",
+    "answer": "BNY emphasizes responsible AI by aligning with compliance, reducing bias, and ensuring ethical use of data models.",
+    "categories": ["Company Knowledge", "Technical Insight"],
+    "difficulty": "Medium",
+    "color": "Yellow"
+  },
+  {
+    "question": "Tell me about a time you faced a major obstacle in a project.",
+    "answer": "Use STAR: Emphasize how you overcame the obstacle with planning, teamwork, or creative problem-solving.",
+    "categories": ["Behavioral", "Resilience/Grit", "STAR"],
+    "difficulty": "Medium",
+    "color": "Green"
+  },
+  {
+    "question": "What are BNY's three strategic pillars?",
+    "answer": "Be More for Our Clients, Run Our Company Better, and Power Our Culture.",
+    "categories": ["Company Knowledge"],
+    "difficulty": "Easy",
+    "color": "Blue"
+  },
+  {
+    "question": "How have you influenced a team decision without direct authority?",
+    "answer": "Describe your communication strategy, persuasion techniques, and the outcome. Use STAR.",
+    "categories": ["Behavioral", "Influencing/Persuasion", "STAR"],
+    "difficulty": "Hard",
+    "color": "Yellow"
+  },
+  {
+    "question": "Explain a time when you simplified a system or process.",
+    "answer": "Use STAR: Focus on your thought process and the measurable efficiency improvements.",
+    "categories": ["Behavioral", "Leadership/Initiative", "STAR"],
+    "difficulty": "Medium",
+    "color": "Green"
+  },
+  {
+    "question": "What differentiates BNY from other financial institutions in terms of AI use?",
+    "answer": "BNY leverages AI for compliance, client service personalization, and operational efficiency while emphasizing governance and responsible AI.",
+    "categories": ["Company Knowledge", "Technical Insight"],
+    "difficulty": "Hard",
+    "color": "Yellow"
+  },
+  {
+    "question": "Tell me about a time you dealt with an ethical or moral conflict.",
+    "answer": "Use STAR: Describe the dilemma, your values, the action you took, and what you learned.",
+    "categories": ["Behavioral", "Ethical/Moral Conflict", "STAR"],
+    "difficulty": "Hard",
+    "color": "Yellow"
+  },
+  {
+    "question": "How do you embody BNY’s value of 'Power Our Culture'?",
+    "answer": "Show how you support diversity, inclusiveness, continuous learning, and collaboration.",
+    "categories": ["Company Knowledge", "Behavioral", "Teamwork"],
+    "difficulty": "Medium",
+    "color": "Green"
+  }
+]
