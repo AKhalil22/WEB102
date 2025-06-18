@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header/>
+      <Header numberOfCards={filteredCards.length}/>
 
       {/* Fetch current card data based on the set index '.?' = chaining = prevent error if out of bounds */}
       <Flashcard 

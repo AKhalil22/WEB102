@@ -1,8 +1,8 @@
-# Web Development Project 2 - *Name of App Here*
+# Web Development Project 2 - *BNY Behavioral Interview Flashcards*
 
 Submitted by: **Ammar Khalil**
 
-This web app: **insert description**
+This web app: **A React flashcard app designed to help students prepare for behavioral interviews. Specifically tailored to BNY Mellon’s cultural pillars and interview questions.**
 
 Time spent: **7** hours spent in total
 
@@ -15,7 +15,7 @@ The following **required** functionality is completed:
   - [X] Title of card set is displayed 
   - [X] A short description of the card set is displayed 
   - [X] A list of card pairs is created
-  - [ ] The total number of cards in the set is displayed 
+  - [X] The total number of cards in the set is displayed 
   - [X] Card set is represented as a list of card pairs (an array of dictionaries where each dictionary contains the question and answer is perfectly fine)
 - [X] **A single card at a time is displayed**
   - [X] Only one half of the information pair is displayed at a time
@@ -35,18 +35,19 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [X] LeetCode Style Tagging!
+* [X] LeetCode Style Tagging
 * [X] Multilevel Categorization
 * [X] Company Specfic Questions
+* [X] Card Flip Effect
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='src/assets/VideoDemo.gif' title='Video Walkthrough' width='100%' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with Kap
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -59,6 +60,8 @@ GIF created with ...
 - Applying the `useEffect` hook was key, especially for filtering cards by category and difficulty.
 - Explored CSS Grid and Flexbox for styling, ultimately preferring Flexbox for its simplicity.
 - This project deepened my understanding of React state, hooks, and modern CSS layouts.
+
+- [] Add built in timer
 
 ## License
 
