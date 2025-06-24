@@ -4,17 +4,17 @@ Submitted by: **Ammar Khalil**
 
 This web app: **A React flashcard app designed to help students prepare for behavioral interviews. Specifically tailored to BNY Mellon’s cultural pillars and interview questions.**
 
-Time spent: **1.5** hours spent in total
+Time spent: **3** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] **The user can enter their guess into an input box *before* seeing the flipside of the card**
+- [X] **The user can enter their guess into an input box *before* seeing the flipside of the card**
   - Application features a clearly labeled input box with a submit button where users can type in a guess
   - Clicking on the submit button with an **incorrect** answer shows visual feedback that it is wrong 
   -  Clicking on the submit button with a **correct** answer shows visual feedback that it is correct
-- [X] **The user can navigate through an ordered list of cardss**
+- [X] **The user can navigate through an ordered list of cards**
   - A forward/next button displayed on the card navigates to the next card in a set sequence when clicked
   - A previous/back button displayed on the card returns to the previous card in the set sequence when clicked
   - Both the next and back buttons should have some visual indication that the user is at the beginning or end of the list (for example, graying out and no longer being available to click), not allowing for wrap-around navigation
@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 - [ ] Users can use a shuffle button to randomize the order of the cards
   - Cards should remain in the same sequence (**NOT** randomized) unless the shuffle button is clicked 
   - Cards should change to a random sequence once the shuffle button is clicked
-- [ ] A user’s answer may be counted as correct even when it is slightly different from the target answer
+- [X] A user’s answer may be counted as correct even when it is slightly different from the target answer
   - Answers are considered correct even if they only partially match the answer on the card 
   - Examples: ignoring uppercase/lowercase discrepancies, ignoring punctuation discrepancies, matching only for a particular part of the answer rather than the whole answer
 - [ ] A counter displays the user’s current and longest streak of correct responses
@@ -36,16 +36,11 @@ The following **optional** features are implemented:
   - The user can mark a card to indicate that it has been mastered
   - Mastered cards are removed from the pool of displayed cards and added to a list of mastered cards
 
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you added to improve the site's functionality!
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='src/assets/VideoDemo2.gif' title='Video Walkthrough' width='100%' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Kap
@@ -56,7 +51,11 @@ GIF created with Kap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Main challenge: managing state and interactions between parent and child React components.
+  - Deciding where to keep state (parent vs. child) required careful thought about data flow and access.
+- Implemented an `isAnswerClose` utility using Fuse.js for fuzzy matching.
+  - Considered returning a score, but used simple Boolean logic for clarity.
+- Learned to define event handlers within the component they affect, reinforcing encapsulation and separation of concerns.
 
 ## License
 
