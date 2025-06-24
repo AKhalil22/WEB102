@@ -72,3 +72,17 @@
   margin-top: 2em;
   gap: 1em;
 }
+
+/* ========== TextBox Styles (Child) ========== */
+
+.text-box {
+  display: flex;
+  flex-flow: column;
+}
+
+.input-field {
+  text-align: center;
+  height: 100px;
+  width: 300px;
+  margin-bottom: 1em;
+}

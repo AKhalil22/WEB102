@@ -2,18 +2,22 @@
 import Header from './components/Header';
 import Flashcard from './components/Flashcard';
 import Navigation from './components/Nagivation';
+import TextBox from './components/TextBox'
 
 import { useState, useEffect } from 'react'
 import flashcard_data from './data/flashcard_data.json'
 import './App.css'
 
 function App() {
-  // Init: State Variables
+  // State Variables: Flashcard Component
   const [cards, setCards] = useState(flashcard_data);
   const [category, selectedCategory] = useState("All");
   const [difficulty, selectedDifficulty] = useState("All");
   const [index, setIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
+
+  // State Variables: Textbox Component
+  const [userInput, setUserInput] = useState("")
 
   // Create list of filterCards based upon selected catergoy & difficulty
   const filteredCards = cards.filter(card =>
@@ -46,6 +50,11 @@ function App() {
     }
   } 
 
+  // Use Fuzzy Matching to check answer in TextBox
+  const handleSubmit = () => {
+    console.log("Submitted:", userInput);
+  }
+
   return (
     <div className='App'>
       <Header numberOfCards={filteredCards.length}/>
@@ -65,6 +74,7 @@ function App() {
       <div className='nav-container'>
         {/* Structure click events as such: onClick={() => handleClick(false)} to prevent prematurely calling the function during render */}
         <Navigation direction="prev" onClick={() => handleClick(false)}/>
+        <TextBox userInput={userInput} setUserInput={setUserInput} handleSubmit={handleSubmit} placeholder={"Answer here!"}/>
         <Navigation direction="next" onClick={() => handleClick(true)}/>
       </div>
     </div>
