@@ -1,6 +1,3 @@
-import React from "react";
-
-
 const APIForm = ({inputs, handleChange, onSubmit})=>
 {
     const inputsInfo = [
