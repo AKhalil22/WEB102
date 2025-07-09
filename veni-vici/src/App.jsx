@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 // Import TheCatAPI Key (https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t)
-const apiKey = "live_zEltfrhvBSpPcLlrKchVeKzVI2r5kswNHjkyneJzquSuvHQ61478EcpoUwNnBgsR";
+const apiKey = "PASTE_API_KEY_HERE";
 
 function App() {
   // Init: useState React hooks to control/manage API requests
