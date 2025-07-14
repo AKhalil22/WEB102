@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Init: FinnHub - Company News Sentiments (https://finnhub.io/docs/api)
+import finnhub from 'finnhub';
+const finnhubClient = new finnhub.DefaultApi("");
+const API_KEY = "";
 
+function App() {
+  // Init: UseState
+  const [tickerInput, setTickerInput] = useState("");
+
+  // UseEffect: Call API to fetch latest company articles (Two Responses due to StrictMode in Main.jsx)
+  useEffect(() => {
+
+    // Fetch news article's relating to stock within given date range
+    const fetchNews = async () => {
+      const res = await fetch(`https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2025-06-13&to=2025-06-14&token=${API_KEY}`);
+      const data = await res.json();
+      console.log(data);
+    };
+
+    // Fetch insider sentiment on stock within range
+    const fetchSentiment = async () => {
+      const res = await fetch(`https://finnhub.io/api/v1/stock/insider-sentiment?symbol=AAPL&from=2025-06-13&to=2025-06-14&token=${API_KEY}`);
+      const data = await res.json();
+      console.log(data);
+    }
+
+    // Call Methods
+    // fetchSentiment();
+    fetchNews();
+
+  }, []);
+
+  // UI
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='app'>
+
+      <div className='search-container'>
+        <input
+          className='search-bar'
+          type="text"
+          value={tickerInput}
+          onChange={(e) => setTickerInput(e.target.value)}
+          placeholder='Enter ticker symbol (e.g. APPL)'
+        />
+
+        <button onClick={() => setTickerInput(tickerInput)}>🔍 Search</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
+
 }
 
 export default App

@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+/* ========== App (Parent) ========== */
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+/* ========== Search Bar Styles (Child) ========== */
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  background-color: white;
+  border-radius: 12px;
+  flex: 1;
+  height: 35px;
+  width: 500px;
+  text-align: center;
+  color: darkslategrey;
+}
