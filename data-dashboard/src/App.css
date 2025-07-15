@@ -45,6 +45,7 @@
 .app {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 /* ========== Search Bar Styles (Child) ========== */
@@ -63,4 +64,24 @@
   width: 500px;
   text-align: center;
   color: darkslategrey;
+}
+
+/* ========== Aticle Container Styles (Child) ========== */
+.article-container {
+  display: flex;
+  justify-content: center;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+}
+
+.article-card img {
+  width: 75%;
+  height: 30vw;
+  object-fit: cover;
+  border-radius: 12px;
 }
