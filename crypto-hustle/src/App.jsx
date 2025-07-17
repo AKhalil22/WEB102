@@ -1,68 +1,82 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import CoinInfo from "./components/CoinInfo";
 import './App.css'
-import CoinInfo from "./components/CoinInfo"
 
-
-const API_KEY = import.meta.env.VITE_APP_API_KEY
+const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 function App() {
-  const [list, setList] = useState(null);
+  const [coinList, setCoinList] = useState([])
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const fetchAllCoinData = async () => {
-      try {
-        const response = await fetch(`https://min-api.cryptocompare.com/data/all/coinlist?&api_key=${API_KEY}`);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
+      // Below we are focusing our query to only 10 coins which have the top trading volume.
+      // This will reduce our query burden, thus preventing us from hitting API rate limits.
+      let coinData = await fetch("https://min-api.cryptocompare.com/data/top/totaltoptiervol?limit=5&assetClass=ALL&tsym=usd&api_key=" + API_KEY)
+      let coinDataJson = await coinData.json()
 
-        const json = await response.json();
-        setList(json);
-        console.log(json);
-        console.log(json.Data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    } 
-
-    fetchAllCoinData();
-
-    /*
-  const callAPI = async (query) => {
-  const response = await fetch(query);
-  const json = await response.json();
-}
-    */
-  }, [])
+      setCoinList(coinDataJson.Data)
+      // coinList is now set to an array of objects. Example object:
+      // { CoinInfo: {
+      //    Id:"1182"
+      //    Name:"BTC"
+      //    FullName:"Bitcoin"
+      //    Internal:"BTC"
+      //    ImageUrl:"/media/37746251/btc.png"
+      //    Url:"/coins/btc/overview"
+      //    Algorithm:"SHA-256"
+      //    ProofType:"PoW"
+      //    Rating:{
+      //    Weiss:{}
+      // }, ...}
+    }
+    fetchAllCoinData().catch(console.error);
+  }, []);
+  
+  const searchItems = searchValue => {
+    setSearchInput(searchValue);
+    if (searchValue !== "") {
+      const filteredData = coinList.filter((item) => {
+        const searchedAttributes = [item.CoinInfo.Name, item.CoinInfo.FullName].map(attr => attr.toLowerCase())
+        return searchedAttributes.some(attr => attr.includes(searchValue))
+      })
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(coinList);
+    }
+  };
 
   return (
     <div className="whole-page">
       <h1>My Crypto List</h1>
-          <ul>
-              <li>TEST</li>
-              {list &&
-                Object.entries(list.Data).slice(0, 50)
-                  // [key, value]
-                  .filter(([_, coinData]) =>
-                    coinData.IsTrading &&
-                    coinData.Algorithm !== "N/A" &&
-                    coinData.ProofType !== "N/A"
-                  )
-                  .map(([coin, coinData]) => (
-                    <CoinInfo
-                      image={list.Data[coin].ImageUrl}
-                      name={list.Data[coin].FullName}
-                      symbol={list.Data[coin].Symbol}
-                    />
-                  )
-                )
-              }
-
-          </ul>
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(inputString) => searchItems(inputString.target.value)}
+      />
+      <ul>
+        { searchInput.length > 0 ?
+          filteredResults?.map(coin => (
+            <CoinInfo
+              key={coin.CoinInfo.Name}
+              image={coin.CoinInfo.ImageUrl}
+              name={coin.CoinInfo.FullName}
+              symbol={coin.CoinInfo.Name}
+            />
+          ))
+         :
+          coinList?.map(coin => (
+            <CoinInfo
+              key={coin.CoinInfo.Name}
+              image={coin.CoinInfo.ImageUrl}
+              name={coin.CoinInfo.FullName}
+              symbol={coin.CoinInfo.Name}
+            />
+          ))
+        }
+      </ul>
     </div>
-
   )
 }
 
