@@ -1,9 +1,14 @@
-import ArticleCard from './components/ArticleCard';
+// Import: Router
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Import: Components + React
+import Dashboard from './components/Dashboard';
+import NewsDetail from './components/NewsDetail';
 import { useEffect, useState } from 'react'
 import './App.css'
 
 // Init: FinnHub - Company News Sentiments (https://finnhub.io/docs/api)
-const API_KEY = "...";
+const API_KEY = "";
 
 function App() {
   // Init: UseState
@@ -23,6 +28,8 @@ function App() {
 
   const endDate = `${year}-${month}-${day}`;
   const startDate = `${year - 1}-${month}-${day}`;
+
+  console.log("Start & End Dates:", startDate, "-", endDate)
 
   // Sort aticles data
   const sortedArticles = articles.filter(article => {
@@ -45,7 +52,6 @@ function App() {
 
     } else {
       return true; // All Articles
-
     }
   });
 
@@ -78,26 +84,16 @@ function App() {
     const fetchSentiment = async () => {
       const res = await fetch(`https://finnhub.io/api/v1/stock/insider-sentiment?symbol=${tickerSymbol}&from=${startDate}&to=${endDate}&token=${API_KEY}`);
       const data = await res.json();
+
+      // Debug console.log("@fetchSentiment - Response:", data.data);
       
       // Condition: Valid Response
       if (data.data && data.data.length > 0) {
-        setSentiment(calculateSentiment(data));
-        // console.log(sentiment)
+        setSentiment(data.data);
       } else {
         setSentiment("N/A");
       }
     };
-
-    // Calculate Sentiment
-    const calculateSentiment = async (sentimentData) => {
-      // Process Data
-      const msprValues = sentimentData.data.map(item => item.mspr);
-      const total = msprValues.reduce((sum, value) => sum + value, 0);
-      const avg = total / msprValues.length;
-      
-      // Return Average
-      return avg.toFixed(2)
-    }
 
     // Call Methods
     fetchSentiment();
@@ -108,49 +104,30 @@ function App() {
   // UI
   return (
     <div className='app'>
+      <Router>
+        <Routes>
+          <Route path = "/" element = {
+            <Dashboard
+              tickerInput={tickerInput}
+              setTickerInput={setTickerInput}
 
-      <div className='search-container'>
-        <input
-          className='search-bar'
-          type="text"
-          value={tickerInput}
-          onChange={(e) => setTickerInput(e.target.value)}
-          placeholder='Enter ticker symbol (e.g. AAPL)'
-        />
+              setTickerSymbol={setTickerSymbol}
 
-        <button onClick={() => setTickerSymbol(tickerInput)}>🔍 Search</button>
-      </div>
+              sentiment={sentiment}
 
-      <h1>Insider Sentiment Score: {sentiment}</h1>
-      <p>The MSPR ranges from -100 for the most negative to 100 for the most positive which can signal price changes in the coming 30-90 days.</p>
-      
-      <hr width="100%"></hr>
+              dateFilter={dateFilter}
+              setDateFilter={setDateFilter}
 
-      <h2>Articles: {sortedArticles.length}</h2>
-
-      <div className='filter-container'>
-        <select className="filter-dropdown" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)}>
-          <option value="year">year</option>
-          <option value="month">month</option>
-          <option value="week">week</option>
-          <option value="today">today</option>
-        </select>
-      </div>
-
-      <div className='article-grid'>
-        {sortedArticles.map((article) => (
-          <ArticleCard
-            key={article.url}
-            headline={article.headline}
-            date={article.datetime}
-            imageSrc={article.image}
-            url={article.url}
-          />
-        ))}
-      </div>
-
+              sortedArticles={sortedArticles}
+            />
+          } />
+          <Route path = "/:encodedUrl" element = {
+            <NewsDetail articles={articles}/>
+          } />
+        </Routes>
+      </Router>
     </div>
-  )
+  );
 
 }
 
