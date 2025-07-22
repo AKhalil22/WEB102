@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 // Init: FinnHub - Company News Sentiments (https://finnhub.io/docs/api)
-const API_KEY = "";
+const API_KEY = "d1qlvv1r01qo4qd8330gd1qlvv1r01qo4qd83310";
 
 function App() {
   // Init: UseState
