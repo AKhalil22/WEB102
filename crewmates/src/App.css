@@ -3,59 +3,66 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 /* ========== App (Parent) ========== */
 /* Styles for the main app container */
-.app {
+.app-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.page-content {
+  padding: 2rem;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  align-items: center;
+  background-color: burlywood;
+
+  /* Add shop background overlay */
+  background-image: url('./assets/ShopOverlayBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ========== Navbar Styles (Child) ========== */
 /* Styles for the navigation bar */
 .navbar-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #f9faf8f3;
+  background-color: transparent;
   padding: 1rem;
-  width: 150px;
-  height: 100vh;
+  height: 100%;
+}
+
+.side-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .side-nav ul{
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 .side-nav li {
-  background-color: gray;
+  background-color: whitesmoke;
   margin: 25px;
   border-radius: 12px;
-  width: 100%;
+  padding: 15px;
 }
 
 /* ========== Home Page Styles (Child) ========== */
 /* Styles specific to the Home page */
-.home-container {
+.home-page-container {
   padding: 2rem;
-  text-align: center;
-}
-
-.home-title {
-  font-size: 2rem;
-  color: #333;
-}
-
-.home-content {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  color: #666;
 }
 
 /* ========== Create Page Styles (Child) ========== */
@@ -102,3 +109,57 @@
   color: #888;
 }
 
+/* ========== Pet Form Styles (Child) ========== */
+/* Styles specific to the PetForm component */
+.pet-form-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}
+
+.pet-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: grey;
+}
+
+.pet-form-label {
+  background-color: whitesmoke;
+  padding: 7px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.pet-form-label input {
+  background-color: white;
+  border-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: grey;
+}
+
+.pet-form-button {
+  width: 100%;
+}
+
+.pet-form-button:hover {
+  background-color: #535bf2;
+}
