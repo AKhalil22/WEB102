@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { supabase } from "../supabase/client";
+import ImageSlider from "./ImageSlider";
 
 function PetForm() {
-    // Init: UseState to keep track of needed info for creating pets
+    // Init: useState to keep track of needed info for creating pets
     const [formData, setFormData] = useState({
         name: '',
         breed: '',
         energy: '',
         color: '',
     });
+
+    // Init: useState to keep track of selected pet image
+    const [petImage, setPetImage] = useState('');
+
+    // Callback: Update pet image w/selected one from ImageSlider component
+    const handleImageSelect = (imageUrl) => {
+        setPetImage(imageUrl);
+    }
 
     // Function: Update formData when user enter's in input fields
     const handleChange = (e) => {
@@ -29,7 +38,8 @@ function PetForm() {
                 name: formData.name,
                 breed: formData.breed,
                 energy: formData.energy,
-                color: formData.color
+                color: formData.color,
+                image_url: petImage,
             }
         ]);
 
@@ -46,6 +56,7 @@ function PetForm() {
             <form className="pet-form" onSubmit={handleSubmit}>
                 <h1>Create a pet!</h1>
                 <label className="pet-form-label">Name: <input type="text" name="name" value={formData.name} onChange={handleChange} required></input></label>
+                <ImageSlider onImageSelect={handleImageSelect} />
                 <label className="pet-form-label">Breed: <input type="text" name="breed" value={formData.breed} onChange={handleChange} required></input></label>
                 <label className="pet-form-label">Energy Level: <input type="text" name="energy" value={formData.energy} onChange={handleChange} required></input></label>
                 <label className="pet-form-label">Color: <input type="text" name="color" value={formData.color} onChange={handleChange} required></input></label>

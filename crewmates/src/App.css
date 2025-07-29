@@ -120,9 +120,37 @@
   background-repeat: no-repeat;
 }
 
+/* Credits: https://freefrontend.com/css-text-effects/ */
+.pet-card-name {
+	place-self: center;
+	background: linear-gradient(90deg, #00f, #0ff, #00f) -100%/ 200%;
+	/* being excessively careful with compat, 
+	 * though this has been supported unprefixed and 
+	 * in the shorthand across major browsers for a while */
+	-webkit-background-clip: text;
+	        background-clip: text;
+	/* use color, don't use -webkit-text-fill-color anymore, 
+	 * was meant to solve a problem we haven't had in years */
+	color: transparent;
+	font: 900 clamp(2em, 50px, 10em) exo, sans-serif;
+	animation: shimmer 2s linear infinite
+}
+
+@keyframes shimmer { to { background-position: 100% } }
+
+.pet-tag-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+.pet-tag-container h2 {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.15em 0.75em;
+}
 
 /* ========== Pet Form Styles (Child) ========== */
-/* Styles specific to the PetForm component */
 .pet-form-container {
   padding: 2rem;
   display: flex;
@@ -175,4 +203,53 @@
 
 .pet-form-button:hover {
   background-color: #535bf2;
+}
+
+/* ========== Pet Form Image Slider Styles (Child) ========== */
+/* Credits: https://www.youtube.com/watch?app=desktop&v=l1MYfu5YWHc&t=0s */
+.slider-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slider-image {
+  width: 50%;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 37%;
+  right: 0px;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 37%;
+  left: 0px;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide-active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
 }

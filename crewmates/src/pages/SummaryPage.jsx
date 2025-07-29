@@ -38,7 +38,7 @@ function SummaryPage() {
                 breed={petData.breed}
                 energy={petData.energy}
                 color={petData.color}
-                image_URL={""}
+                image_url={petData.image_url}
               />
             ))}
         </ul>
