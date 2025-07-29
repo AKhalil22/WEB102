@@ -30,10 +30,11 @@ function SummaryPage() {
   return (
     <div className="summary-page-container">
         <ul className="summary-page-list">
-          <h1>Pets</h1>
+          <h1>You have {petsData.length} pets!</h1>
           {petsData &&
             petsData.map((petData) => (
               <PetCard
+                id={petData.id}
                 name={petData.name}
                 breed={petData.breed}
                 energy={petData.energy}

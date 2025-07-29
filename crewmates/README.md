@@ -1,20 +1,20 @@
-# Web Development Project 7 - *Name of App Here*
+# Web Development Project 7 - *Adoptopia*
 
-Submitted by: **Your Name Here**
+Submitted by: **Ammar Khalil**
 
 This web app: **insert description**
 
-Time spent: **X** hours spent in total
+Time spent: **8.5** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
 
-- [ ] **The web app contains a page that features a create form to add a new crewmate**
+- [X] **The web app contains a page that features a create form to add a new crewmate**
   - Users can name the crewmate
   - Users can set the crewmate’s attributes by clicking on one of several values
-- [ ] **The web app includes a summary page of all the user’s added crewmatese**
+- [X] **The web app includes a summary page of all the user’s added crewmatese**
   -  The web app contains a summary page dedicated to displaying all the crewmates the user has made so far
   -  The summary page is sorted by creation date such that the most recently created crewmates appear at the top
 - [ ] **A previously created crewmate can be updated from the list of crewmates in the summary page**
@@ -35,15 +35,16 @@ The following **optional** features are implemented:
   - e.g., a Dungeons and Dragons class or a development team role (project manager, product owner, etc.)
   - User can choose a `category` option to describe their crewmate before any attributes are specified
   - Based on the category value, users are allowed to access only a subset of the possible attributes
-- [ ] A section of the summary page, displays summary statistics about a user’s crew on their crew page
+- [X] A section of the summary page, displays summary statistics about a user’s crew on their crew page
   - e.g., the percent of members with a certain attribute 
 - [ ] The summary page displays a custom “success” metric about a user’s crew which changes the look of the crewmate list
-  - e.g., a pirate crew’s predicted success at commandeering a new galley
+  - e.g., a pirate crew’s predicted success at commandeering a new gallery
 
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [X] Image carousel pet selector.
+* [X] Custom Pet Images.
 
 ## Video Walkthrough
 

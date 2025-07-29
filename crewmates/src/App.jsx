@@ -5,8 +5,7 @@ import Navbar from './components/NavBar';
 import Home from "./pages/Home";
 import CreatePage from "./pages/CreatePage";
 import SummaryPage from "./pages/SummaryPage";
-import DetailPage from "./pages/DetailPage";
-import EditPage from "./pages/EditPage";
+import PetPage from "./pages/PetPage";
 
 import './App.css'
 
@@ -20,8 +19,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/create" element={<CreatePage/>}/>
             <Route path="/read" element={<SummaryPage/>}/>
-            <Route path="/detail/:id" element={<DetailPage/>}/>
-            <Route path="/update/:id/edit" element={<EditPage/>}/>
+            <Route path="/pets/:id" element={<PetPage/>}/>
           </Routes>
         </div>
       </div>
