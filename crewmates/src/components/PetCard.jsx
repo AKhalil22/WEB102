@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const PetCard = ({ id, name, breed, energy, color, image_url }) => {
+const PetCard = ({ id, name, breed, energy, color, image_url, showTags }) => {
     // Init: Navigvation Object
     const navigate = useNavigate();
 
@@ -13,10 +13,12 @@ const PetCard = ({ id, name, breed, energy, color, image_url }) => {
         <div className="pet-card-container" style={{backgroundColor: color}} onClick={handleClick}>
             <h1 className="pet-card-name">{name}</h1>
             <img src={image_url}/>
-            <div className="pet-tag-container">
-                <h2>{breed}</h2>
-                <h2>{energy}</h2>
-            </div>
+            {showTags && (
+                <div className="pet-tag-container">
+                    <h2>{breed}</h2>
+                    <h2>{energy}</h2>
+                </div>
+            )}
         </div>
     );
 }

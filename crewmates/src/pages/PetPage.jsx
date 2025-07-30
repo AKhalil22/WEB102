@@ -66,14 +66,18 @@ function PetPage() {
 
   // Function: Update current pet details in database
   const handleEdit = async () => {
-
+    if (isEditing) {
+      
+    } else {
+      setIsEditing(true);
+    }
   }
 
   return (
     <div className="pet-page-container">
       {petData ? (
-        {isEditing ? (
-          <PetForm/>
+        isEditing ? (
+          <PetForm />
         ) : (
           <div className="pet-page-inner">
             <PetCard
@@ -82,14 +86,15 @@ function PetPage() {
               breed={petData.breed}
               energy={petData.energy}
               color={petData.color}
-              image_url={"." + petData.image_url}
+              image_url={petData.image_url}
+              showTags={true}
             />
             <div className="pet-buttons">
               <button onClick={handleEdit}>✍️ Edit Pet</button>
               <button onClick={handleDelete}>🗑️ Delete Pet</button>
             </div>
           </div>
-        )}
+        )
       ) : (
         <p>Loading pet details...</p>
       )}

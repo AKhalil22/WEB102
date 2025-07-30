@@ -40,6 +40,7 @@ function SummaryPage() {
                 energy={petData.energy}
                 color={petData.color}
                 image_url={petData.image_url}
+                showTags={false}
               />
             ))}
         </ul>
