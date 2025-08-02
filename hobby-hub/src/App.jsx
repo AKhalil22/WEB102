@@ -1,8 +1,9 @@
 // Import: Functionality
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 // Import: Components
-import Navbar from './components/NavBar';
+import SearchBar from "./components/SearchBar";
 
 // Import: Pages
 import HomePage from "./pages/HomePage";
@@ -14,10 +15,13 @@ import EditPostPage from "./pages/EditPostPage";
 import './App.css'
 
 function App() {
+  // Init: UseState
+  const [search, setSearch] = useState("");
+
   return (
     <Router>
       <div className='app-container'>
-        <Navbar/>
+        <SearchBar setSearch={setSearch}/>
         <div className="page-content">
           <Routes>
             <Route path="/" element={<HomePage/>}/>

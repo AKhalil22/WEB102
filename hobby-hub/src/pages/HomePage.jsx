@@ -1,14 +1,19 @@
+// Import: React hooks & Supabase connection
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
+
+// Import: Components
 import PostCard from "../components/PostCard";
+import SortBar from "../components/SortBar";
 
 function HomePage() {
-  // Init: useState to store fetched pets from database (Supabase)
+  // useState: Store fetched posts from database + set sorting method
   const [postsData, setPostsData] = useState([]);
+  const [dateFilter, setDateFilter] = useState(""); // Default == Most Popular
 
-  // useEffect: Fetch pets from database & assign to useState once page renders
+  // useEffect: Fetch posts from database & assign to useState once page renders
   useEffect(() => {
-    // Function: Create async call to database to fetch & assign pets to useState
+    // Function: Create async call to database to fetch & assign posts to useState
     const fetchPosts = async () => {
       const { data, error } = await supabase
         .from('posts')
@@ -18,7 +23,7 @@ function HomePage() {
       if (error) {
         console.error("Error fetching posts:", error)
       } else {
-        // Update list of pets
+        // Update list of posts
         setPostsData(data)
       } 
     };
@@ -28,15 +33,20 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="home-page-container">
-        <ul className="home-page-list">
+    <div className="page-container">
+        <SortBar setDateFilter={setDateFilter}/>
+        <h1>Home Page</h1>
+        <ul className="page-list">
           {postsData &&
             postsData.map((postsData) => (
               <PostCard
                 id={postsData.id}
                 title={postsData.title}
+                content={postsData.content}
+                image_url={postsData.image_url}
                 created_at={postsData.created_at}
                 upvotes={postsData.upvotes}
+                showDetails={false}
               />
             ))}
         </ul>
