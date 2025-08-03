@@ -34,7 +34,7 @@ function HomePage() {
 
   return (
     <div className="page-container">
-        <SortBar setDateFilter={setDateFilter}/>
+        <SortBar dateFilter={dateFilter} setDateFilter={setDateFilter}/>
         <h1>Home Page</h1>
         <ul className="page-list">
           {postsData &&

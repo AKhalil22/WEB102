@@ -42,11 +42,35 @@ function PostForm() {
     return (
         <div className="page-container">
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Create your own post!</h1>
-                <label className="form-label">Title: <input type="text" name="title" value={formData.name} onChange={handleChange} required></input></label>
-                <label className="form-label">Breed: <input type="text" name="content" value={formData.breed} onChange={handleChange} required></input></label>
-                <label className="form-label">Energy Level: <input type="text" name="image_url" value={formData.energy} onChange={handleChange} required></input></label>
-                <button className="form-button" type="submit">Create Pet</button>
+                <h1>Create a post!</h1>
+
+                <input
+                    type="text"
+                    className="form-input"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    required
+                    placeholder="Title"
+                />
+                <input
+                    type="text"
+                    className="form-input"
+                    name="content"
+                    value={formData.content}
+                    onChange={handleChange}
+                    placeholder="Content (Optional)"
+                />
+                <input
+                    type="text"
+                    className="form-input"
+                    name="image_url"
+                    value={formData.image_url}
+                    onChange={handleChange}
+                    placeholder="Image URL (Optional)"
+                />
+
+                <button className="form-button" type="submit">Create Post</button>
             </form>
         </div>
     );

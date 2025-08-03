@@ -4,11 +4,10 @@ const SearchBar = ({ setSearch }) => {
             <input
                 className='search-bar'
                 type="text"
-                value={searchInput}
                 placeholder='Enter ticker symbol (e.g. AAPL)'
             />
 
-            <button onClick={() => setSearch(searchInput)}>🔍 Search</button>
+            <button onClick={() => setSearch(search)}>🔍</button>
         </div>
     );
 }
