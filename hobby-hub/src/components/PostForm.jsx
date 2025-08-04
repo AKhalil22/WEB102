@@ -15,7 +15,7 @@ function PostForm() {
         const { name, value } = e.target; // Unpack corresponding field name & new value
         setFormData((prevData) => ({
             ...prevData, // Shallow copy
-            [name]: value.trim(), // Add updated value
+            [name]: value, // Add updated value
         }));
     };
 
