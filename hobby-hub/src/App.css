@@ -33,8 +33,12 @@
 /* ===== Home ===== */
 .page-list {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.55fr));
   grid-template-rows: auto;
+
+  /* Add space between posts */
+  gap: 16px;
+  overflow-y: auto;
 }
 
 /* ========== Components ========== */
@@ -82,6 +86,17 @@
 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 16px;
+}
+
+/* ===== Post Card ===== */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  border-color: black;
+  border: 4px solid black;
 }
 
 /* ===== Post Form ===== */

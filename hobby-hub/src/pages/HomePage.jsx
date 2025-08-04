@@ -36,7 +36,7 @@ function HomePage() {
     <div className="page-container">
         <SortBar dateFilter={dateFilter} setDateFilter={setDateFilter}/>
         <h1>Home Page</h1>
-        <ul className="page-list">
+        <div className="page-list">
           {postsData &&
             postsData.map((postsData) => (
               <PostCard
@@ -49,7 +49,7 @@ function HomePage() {
                 showDetails={false}
               />
             ))}
-        </ul>
+        </div>
     </div>
   );
 }

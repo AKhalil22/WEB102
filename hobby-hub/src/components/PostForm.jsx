@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../supabase/client";
+import { useNavigate } from "react-router-dom";
 
 function PostForm() {
     // Init: useState to keep track of needed info for creating posts
@@ -18,11 +19,13 @@ function PostForm() {
         }));
     };
 
+    // Init: useNavigate to redirect user to homepage after post creation
+    const navigate = useNavigate();
+
     // Function: Send updates to database for newly create post
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent page reload (control user interations)
+        e.preventDefault();
 
-        // Create Operation: Supabase Logic
         const { data, error } = await supabase.from("posts").insert([
             {
                 title: formData.title,
@@ -31,11 +34,11 @@ function PostForm() {
             }
         ]);
 
-        // Conditions: Log Success/Failure
         if (error) {
-            console.log("Insert Failed:", error.message);
+            alert("Failed to create post: " + error.message);
         } else {
-            console.log("Pet Added:", data);
+            alert("Post created successfully!");
+            navigate("/");
         }
     };
 
