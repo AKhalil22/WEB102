@@ -31,7 +31,7 @@ function App() {
 
   console.log("Start & End Dates:", startDate, "-", endDate)
 
-  // Sort aticles data
+  // Sort articles data
   const sortedArticles = articles.filter(article => {
     // Convert UNIX timestamp
     const articleDate = new Date(article.datetime * 1000);
