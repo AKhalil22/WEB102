@@ -14,12 +14,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
 
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: gray;
+  min-height: 80vh;
+  overflow-y: auto;
 }
 
 /* ========== Pages ========== */
@@ -33,12 +34,12 @@
 /* ===== Home ===== */
 .page-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.55fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: auto;
 
   /* Add space between posts */
   gap: 16px;
-  overflow-y: auto;
+  margin-bottom: 12px;
 }
 
 /* ========== Components ========== */
@@ -94,9 +95,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-  border-color: black;
-  border: 4px solid black;
+
+  background-color: whitesmoke;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: 3px solid grey;
+  cursor: pointer;
+}
+
+.card-container button {
+  margin-bottom: 17px;
 }
 
 /* ===== Post Form ===== */
