@@ -10,36 +10,40 @@ import PostCard from "../components/PostCard";
 function HomePage() {
   // useState: Store fetched posts from database + set sorting method
   const [postsData, setPostsData] = useState([]);
-  const [dateFilter, setDateFilter] = useState(""); // Default == Most Popular
+  const [filter, setFilter] = useState(""); // Default == Most Popular
   const [search, setSearch] = useState("");
 
   // Function: Create async call to database to fetch & assign posts to useState
   const fetchPosts = async () => {
-    // Condition: Clean up input & show all results if empty string
-    if (search.trim() === "") {
-      const { data, error } = await supabase
-        .from('posts')
-        .select()
-        .order('created_at', { descending: true })
+    // Init: Default search query
+    let query = supabase.from('posts').select();
 
-      if (error) {
-        console.error("Error fetching posts:", error);
-      } else {
-        // Update list of posts
-        setPostsData(data);
-      } 
-    // Condition: Fetch Results with specific matches
+    // Condition: Set specific search query
+    if (search.trim() !== "") {
+      // Case-insensitive search in 'title'
+      query = query.ilike('title', `%${search}%`);
+    }
+
+    // Conditions: Sort data based on filter type
+    switch (filter) {
+      case "oldest":
+        query = query.order('created_at', { ascending: true});
+        break;
+      case "popular":
+        query = query.order('upvotes', {ascending: false});
+        break;
+      default:
+        query = query.order('created_at', {ascending: false});
+    } 
+
+    // Supabase: Perform search query
+    const { data, error } = await query;
+
+    // Conditions: Output state of success/error based on results
+    if (error) {
+      console.error("Error searching posts:", error);
     } else {
-      const { data, error } = await supabase
-        .from('posts')
-        .select()
-        .ilike('title', `%${search}%`); // Case-insensitive search in 'title'
-
-      if (error) {
-        console.error("Error searching posts:", error);
-      } else {
-        setPostsData(data);
-      }
+      setPostsData(data);
     }
   };
 
@@ -51,14 +55,18 @@ function HomePage() {
 
   // useEffect: Load search results for specific search query
   useEffect(() => {
-    console.log("Search Query Updated!")
     fetchPosts();
   }, [search])
+
+  // useEffect: Update posts based on ordered filter
+  useEffect(() => {
+    fetchPosts();
+  }, [filter])
 
   return (
     <div className="page-container">
         <SearchBar search={search} setSearch={setSearch}/>
-        <SortBar dateFilter={dateFilter} setDateFilter={setDateFilter}/>
+        <SortBar filter={filter} setFilter={setFilter}/>
         <h1>Home Page</h1>
         <div className="page-list">
           {postsData &&
