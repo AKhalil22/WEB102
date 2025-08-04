@@ -1,10 +1,12 @@
-const SearchBar = ({ setSearch }) => {
+const SearchBar = ({ search, setSearch }) => {
     return (
         <div className='search-bar-container'>
             <input
                 className='search-bar'
                 type="text"
-                placeholder='Enter ticker symbol (e.g. AAPL)'
+                placeholder='Search Posts'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
             />
 
             <button onClick={() => setSearch(search)}>🔍</button>
