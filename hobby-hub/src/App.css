@@ -42,6 +42,24 @@
   margin-bottom: 12px;
 }
 
+/* ===== Details ===== */
+.detail-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  gap: 10px; /* Optional: adds space between buttons */
+}
+
+.detail-buttons button {
+  flex: 1; /* Each button grows equally to fill available space */
+  min-width: 0; /* Prevents overflow if text is long */
+}
+
 /* ========== Components ========== */
 
 /* ===== Search Bar ===== */
@@ -134,4 +152,9 @@
   margin-bottom: 30px;
   border-radius: 12px;
   text-align: center;
+}
+
+/* ===== Comment List ===== */
+.comment-list-component {
+
 }
