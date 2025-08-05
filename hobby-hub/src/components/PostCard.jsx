@@ -55,7 +55,7 @@ const PostCard = ({ id, title, content, image_url, created_at, upvotes, showDeta
             <h1 className="card-name">{title}</h1>
             {showDetails && (
                 <div className="card-details-container">
-                    <img src={image_url} alt="Post"/>
+                    <img src={image_url}/>
                     <p>{content}</p>
                 </div>
             )}
