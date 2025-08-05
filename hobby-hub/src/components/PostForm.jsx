@@ -2,13 +2,12 @@ import { useState } from "react";
 import { supabase } from "../supabase/client";
 import { useNavigate } from "react-router-dom";
 
-function PostForm() {
+function PostForm({ initialValues = {title: '', content: '', image_url: ''}, isEditing, handlePostUpdate}) {
     // Init: useState to keep track of needed info for creating posts
-    const [formData, setFormData] = useState({
-        title: '',
-        content: '',
-        image_url: '',
-    });
+    const [formData, setFormData] = useState(initialValues);
+
+    // Init: useNavigate to redirect user to homepage after post creation
+    const navigate = useNavigate();
 
     // Function: Update formData when user enter's in input fields
     const handleChange = (e) => {
@@ -19,14 +18,9 @@ function PostForm() {
         }));
     };
 
-    // Init: useNavigate to redirect user to homepage after post creation
-    const navigate = useNavigate();
-
-    // Function: Send updates to database for newly create post
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const { data, error } = await supabase.from("posts").insert([
+    // Function: Create a new post
+    const handleCreatePost = async () => {
+        const { error } = await supabase.from("posts").insert([
             {
                 title: formData.title,
                 content: formData.content,
@@ -40,12 +34,22 @@ function PostForm() {
             alert("Post created successfully!");
             navigate("/");
         }
+    }
+
+    // Function: Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isEditing) {
+            await handlePostUpdate(formData);
+        } else {
+            await handleCreatePost();
+        }
     };
 
     return (
         <div className="page-container">
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Create a post!</h1>
+                <h1>{isEditing ? "Edit Post" : "Create a post!"}</h1>
 
                 <input
                     type="text"
@@ -56,8 +60,7 @@ function PostForm() {
                     required
                     placeholder="Title"
                 />
-                <input
-                    type="text"
+                <textarea
                     className="form-input"
                     name="content"
                     value={formData.content}
@@ -73,7 +76,9 @@ function PostForm() {
                     placeholder="Image URL (Optional)"
                 />
 
-                <button className="form-button" type="submit">Create Post</button>
+                <button className="form-button" type="submit">
+                    {isEditing ? "Update Post" : "Create Post"}
+                </button>
             </form>
         </div>
     );

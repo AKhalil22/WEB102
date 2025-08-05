@@ -3,7 +3,7 @@ import PostForm from "../components/PostForm.jsx";
 function CreatePostPage() {
   return (
     <div className="create-page-container">
-      <PostForm/>
+      <PostForm isEditing={false}/>
     </div>
   );
 }

@@ -12,16 +12,10 @@ function PostDetailPage() {
   // Extract post id
   const { id } = useParams();
 
-  // useState: Store fetched post data, comments editing mode, formData state
+  // useState: Store fetched post data, comments editing mode
   const [postData, setPostData] = useState([]);
   const [comments, setComments] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    title: postData.title,
-    content: postData.content,
-    author: postData.author,
-    created_at: postData.created_at,
-  });
 
   // Init: Navigator Object
   const navigate = useNavigate();
@@ -64,18 +58,31 @@ function PostDetailPage() {
 
   // Function: Delete post with corresponding id
   const handleDelete = async () => {
+    // Confirm Deletion
     const confirmDelete = window.confirm("Are you sure you want to delete this post?");
     if (!confirmDelete) return;
 
-    const { error } = await supabase
+    // Delete comments with corresponding post with 'id' from database
+    const { error: commentError} = await supabase
+      .from('comments')
+      .delete()
+      .eq("post_id", id)
+
+      if (commentError) {
+        console.error("Failed to delete comments:", commentError.message);
+        return;
+      }
+
+    // Delete post with 'id' from database
+    const { error: postError } = await supabase
       .from('posts') // Update table name
       .delete()
       .eq("id", id);
 
-    if (error) {
-      console.error("Deletion Failed:", error.message);
+    if (postError) {
+      console.error("Failed to delete post:", postError.message);
     } else {
-      navigate("/posts"); // Navigate back to summary page
+      navigate("/"); // Navigate back to summary page
     }
   };
 
@@ -97,13 +104,37 @@ function PostDetailPage() {
     }
   }
 
+  // Function: Update existing post
+  const handlePostUpdate = async(updatedData) => {
+    const { error } = await supabase
+      .from('posts')
+      .update(updatedData)
+      .eq("id", id);
+
+    if (error) {
+      console.error("Failed to update post:", error.message)
+    } else {
+      // Exist editing mode & refresh post data
+      setIsEditing(false); 
+      fetchPostDetails();
+    }
+  }
+
   return (
     <div className="page-container">
       {postData ? (
         isEditing ? (
-          <PostForm />
+          <PostForm 
+            initialValues={{
+              title: postData.title,
+              content: postData.content,
+              image_url: postData.image_url,
+            }}
+            isEditing={true}
+            handlePostUpdate={handlePostUpdate}
+            />
         ) : (
-          <div className="page-content">
+          <div className="detail-page-content">
             <PostCard
                 id={postData.id}
                 title={postData.title}
