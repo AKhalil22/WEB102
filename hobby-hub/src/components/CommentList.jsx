@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { formatDate } from '../utils/dateUtils';
 
-const CommentList = ({ comments, onCommentSubmit }) => {
+const CommentList = ({ comments, onCommentSubmit, refreshComments }) => {
     // useState: Keep track of user comment/input
     const [comment, setComment] = useState('');
 
@@ -14,13 +15,17 @@ const CommentList = ({ comments, onCommentSubmit }) => {
 
         onCommentSubmit(comment);
         setComment('');
+        refreshComments();
     };
 
     return (
         <div className="comment-list-container">
             <div className='comment-list'>
                 {comments.map(c => (
-                    <div className="comment" key={c.id}>{c.content}</div>
+                    <div className="comment" key={c.id}>
+                        {c.content}
+                        <small>({formatDate(c.created_at)})</small>
+                    </div>
                 ))}
             </div>
 

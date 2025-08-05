@@ -167,6 +167,11 @@
 }
 
 .comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
   background-color: whitesmoke;
   border: none;
   padding: 1rem;
@@ -176,6 +181,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   border-radius: 12px;
+  gap: 0.5rem;
 }
 
 .comment-form {
