@@ -1,3 +1,8 @@
+/* Normalize box-sizing globally */
+* {
+  box-sizing: border-box;
+}
+
 /* ========== Root Styles ========== */
 #root {
   max-width: 1280px;
@@ -24,11 +29,18 @@
 }
 
 /* ========== Pages ========== */
+.page-content {
+  width: 80%;
+}
+
 .page-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  width: 100%;
+  padding: 0px;
 }
 
 /* ===== Home ===== */
@@ -40,9 +52,14 @@
   /* Add space between posts */
   gap: 16px;
   margin-bottom: 12px;
+  padding: 16px;
 }
 
 /* ===== Details ===== */
+.detail-page-content {
+  padding: 22px;
+}
+
 .detail-buttons {
   display: flex;
   justify-content: space-between;
@@ -125,18 +142,25 @@
   margin-bottom: 17px;
 }
 
+.card-details-container img {
+  max-width: 100%;
+  border-radius: 8px; 
+}
+
 /* ===== Post Form ===== */
 .form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  width: 100%;
 }
 
 .form button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  width: 110%;
+  width: 100%;
 }
 
 .form-input {
@@ -152,6 +176,8 @@
   margin-bottom: 30px;
   border-radius: 12px;
   text-align: center;
+
+  resize: vertical; /* Allows resizing only in height */
 }
 
 /* ===== Comment List ===== */
@@ -189,24 +215,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  width: 100%;
 }
-
-.comment-form-input {
-  width: 90%;
-  background-color: whitesmoke;
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  color: gray;
-
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  border-radius: 12px;
-  text-align: center;
-
-  resize: vertical; /* Allows resizing only in height */
-}
-
 
 .comment-form button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
