@@ -2,14 +2,13 @@
 
 Submitted by: **Ammar Khalil**
 
-This web app: **insert description**
+This web app: **Startup Stories is a forum for aspiring founders and idea lovers to share, discuss, and validate startup concepts.**
 
-Time spent: **X** hours spent in total
+Time spent: **11.5** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
-
 
 - [X] **Web app includes a create form that allows the user to create posts**
   - Form requires users to add a post title
@@ -38,7 +37,7 @@ The following **required** functionality is completed:
     - Each click increases the post's upvotes count by one
     - Users can upvote any post any number of times
 
-- [ ] **A post that a user previously created can be edited or deleted from its post pages**
+- [X] **A post that a user previously created can be edited or deleted from its post pages**
   - After a user creates a new post, they can go back and edit the post
   - A previously created post can be deleted from its post page
 
@@ -80,7 +79,9 @@ GIF created with Kap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Challenges:
+- Debugging issues with the `useState` hook while updating accounts.
+- Designing code in a way that allows for future innovation.
 
 ## License
 
