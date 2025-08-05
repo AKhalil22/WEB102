@@ -32,7 +32,7 @@ const CommentList = ({ comments, onCommentSubmit, refreshComments }) => {
             <form className='comment-form' onSubmit={handleSubmit}>
 
                 <textarea
-                    className="comment-form-input"
+                    className="form-input"
                     value={comment}
                     onChange={e => setComment(e.target.value)}
                     placeholder="Leave Comment"
