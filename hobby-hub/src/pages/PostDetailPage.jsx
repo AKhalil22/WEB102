@@ -28,38 +28,39 @@ function PostDetailPage() {
 
   // useEffect: Fetch corresponding post details from id passed from URL
   useEffect(() => {
-    // Function: Fetch post details for corresponding id
-    const fetchPostDetails = async () => {
-      const { data, error } = await supabase
-        .from('posts') // Update table name
-        .select()
-        .eq('id', id)
-        .single();
-
-      if (error) {
-        console.log("Error fetching post details:", error);
-      } else {
-        setPostData(data);
-      }
-    };
-
-    // Function: Fetch comments for corresponding post with id
-    const fetchComments = async () => {
-      const { data, error } = await supabase
-        .from('comments')
-        .select()
-        .eq('post_id', id)
-        .order('created_at', {ascending: false});
-      
-      if (error) {
-        console.log("Error fetching comments for post:", error);
-      } else {
-        setComments(data);
-      }
-    }
-
+    fetchPostDetails();
     fetchComments();
   }, [id]);
+
+  // Function: Fetch post details for corresponding id
+  const fetchPostDetails = async () => {
+    const { data, error } = await supabase
+      .from('posts') // Update table name
+      .select()
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.log("Error fetching post details:", error);
+    } else {
+      setPostData(data);
+    }
+  };
+
+  // Function: Fetch comments for corresponding post with id
+  const fetchComments = async () => {
+    const { data, error } = await supabase
+      .from('comments')
+      .select()
+      .eq('post_id', id)
+      .order('created_at', {ascending: false});
+    
+    if (error) {
+      console.log("Error fetching comments for post:", error);
+    } else {
+      setComments(data);
+    }
+  }
 
   // Function: Delete post with corresponding id
   const handleDelete = async () => {
@@ -85,14 +86,14 @@ function PostDetailPage() {
 
   // Function: Handle comment submission
   const handleAddComment = async (content) => {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('comments')
       .insert([{post_id: id, content}]);
 
     if (error) {
       console.error("Deletion Failed:", error.message);
     } else {
-      navigate("/posts"); // Navigate back to summary page
+      navigate(`/read/${postData.id}`); // Navigate back to summary page
     }
   }
 
@@ -116,7 +117,7 @@ function PostDetailPage() {
               <button onClick={handleEdit}>✍️ Edit</button>
               <button onClick={handleDelete}>🗑️ Delete</button>
             </div>
-            <CommentList comments={comments} onCommentSubmit={handleAddComment}/>
+            <CommentList comments={comments} onCommentSubmit={handleAddComment} refreshComments={fetchComments}/>
           </div>
         )
       ) : (

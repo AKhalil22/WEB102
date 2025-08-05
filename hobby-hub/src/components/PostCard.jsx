@@ -1,55 +1,65 @@
+// Import: React router, hooks, supabase connection, & utils
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { supabase } from "../supabase/client"; 
+import { formatDate } from "../utils/dateUtils";
 
 const PostCard = ({ id, title, content, image_url, created_at, upvotes, showDetails }) => {
-    // Init: Navigvation Object
+    // Init: Navigation Object
     const navigate = useNavigate();
+
+    // useState: Track current upvotes & if user has upvoted
+    const [currentUpvotes, setCurrentUpvotes] = useState(upvotes || 0);
+    const [hasUpvoted, setHasUpvoted] = useState(false);
 
     // Function: Load Detail/Edit page when user clicks pet card
     const handleClick = () => {
         navigate(`/read/${id}`);
     };
 
-    // Function: Format the created_at date 
-    const formatDate = (created_at) => {
-        const createdDate = new Date(created_at);
-        const now = new Date();
-        const diffInSeconds = Math.floor((now - createdDate) / 1000);
+    // Function: Handle upvote/unvote button click
+    const handleUpvote = async (e) => {
+        e.stopPropagation(); // Prevent triggering card click
 
-        // Conditions: Set appropriate posted @ date
-        if (diffInSeconds < 60) {
-            return "Posted a few seconds ago";
-        } else if (diffInSeconds < 3600) {
-            const minutes = Math.floor(diffInSeconds / 60);
-            return `Posted ${minutes} minute${minutes > 1 ? "s" : ""} ago`;
-        } else if (diffInSeconds < 86400) {
-            const hours = Math.floor(diffInSeconds / 3600);
-            return `Posted ${hours} hour${hours > 1 ? "s" : ""} ago`;
-        } else if (diffInSeconds < 604800) {
-            const days = Math.floor(diffInSeconds / 86400);
-            return `Posted ${days} day${days > 1 ? "s" : ""} ago`;
-        } else if (diffInSeconds < 2592000) {
-            const weeks = Math.floor(diffInSeconds / 604800);
-            return `Posted ${weeks} week${weeks > 1 ? "s" : ""} ago`;
-        } else if (diffInSeconds < 31536000) {
-            const months = Math.floor(diffInSeconds / 2592000);
-            return `Posted ${months} month${months > 1 ? "s" : ""} ago`;
+        let newUpvotes = currentUpvotes;
+
+        if (hasUpvoted) {
+            // Unvote
+            newUpvotes -= 1;
         } else {
-            const years = Math.floor(diffInSeconds / 31536000);
-            return `Posted ${years} year${years > 1 ? "s" : ""} ago`;
+            // Upvote
+            newUpvotes += 1;
         }
-    }
+
+        // Update state
+        setCurrentUpvotes(newUpvotes);
+        setHasUpvoted(!hasUpvoted);
+
+        // Update database
+        const { error } = await supabase
+            .from('posts') // Replace with your table name
+            .update({ upvotes: newUpvotes }) // Update the upvotes column
+            .eq('id', id); // Find the post with the matching ID
+
+        if (error) {
+            console.error("Failed to update upvotes in database:", error);
+        } else {
+            console.log("Database successfully updated.");
+        }
+    };
 
     return (
-        <div className="card-container" onClick={handleClick}>
+        // Allow users to click a card & show detailed view though prevent from cli</div>cking again in detailed view
+        <div className="card-container" onClick={showDetails ? null : handleClick}>
             <h2 className="card-date">{formatDate(created_at)}</h2>
             <h1 className="card-name">{title}</h1>
             {showDetails && (
                 <div className="card-details-container">
-                    <img src={image_url}/>
+                    <img src={image_url} alt="Post"/>
                     <p>{content}</p>
                 </div>
             )}
-            <button className="upvote-button" onClick={(e) => {e.stopPropagation()}}>{upvotes} 👍</button>
+            <button className="upvote-button" onClick={handleUpvote}>{currentUpvotes} 👍</button>
         </div>
     );
 }
