@@ -155,6 +155,55 @@
 }
 
 /* ===== Comment List ===== */
-.comment-list-component {
+.comment-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+.comment-list {
+  width: 100%;
+}
+
+.comment {
+  background-color: whitesmoke;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: gray;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  border-radius: 12px;
+}
+
+.comment-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.comment-form-input {
+  width: 90%;
+  background-color: whitesmoke;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: gray;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  border-radius: 12px;
+  text-align: center;
+
+  resize: vertical; /* Allows resizing only in height */
+}
+
+
+.comment-form button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 100%;
 }

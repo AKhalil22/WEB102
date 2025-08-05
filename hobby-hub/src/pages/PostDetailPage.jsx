@@ -49,7 +49,7 @@ function PostDetailPage() {
         .from('comments')
         .select()
         .eq('post_id', id)
-        .order(created_at, {ascending: false});
+        .order('created_at', {ascending: false});
       
       if (error) {
         console.log("Error fetching comments for post:", error);
@@ -58,7 +58,7 @@ function PostDetailPage() {
       }
     }
 
-    fetchPostDetails();
+    fetchComments();
   }, [id]);
 
   // Function: Delete post with corresponding id
@@ -83,6 +83,19 @@ function PostDetailPage() {
     setIsEditing(!isEditing);
   };
 
+  // Function: Handle comment submission
+  const handleAddComment = async (content) => {
+    const { data, error } = await supabase
+      .from('comments')
+      .insert([{post_id: id, content}]);
+
+    if (error) {
+      console.error("Deletion Failed:", error.message);
+    } else {
+      navigate("/posts"); // Navigate back to summary page
+    }
+  }
+
   return (
     <div className="page-container">
       {postData ? (
@@ -100,8 +113,8 @@ function PostDetailPage() {
                 showDetails={true}
             />
             <div className="detail-buttons">
-              <button onClick={handleEdit}>✍️ Edit Post</button>
-              <button onClick={handleDelete}>🗑️ Delete Post</button>
+              <button onClick={handleEdit}>✍️ Edit</button>
+              <button onClick={handleDelete}>🗑️ Delete</button>
             </div>
             <CommentList comments={comments} onCommentSubmit={handleAddComment}/>
           </div>
