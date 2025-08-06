@@ -1,11 +1,18 @@
 // Import: React router, hooks, supabase connection, & utils
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/client"; 
 import { formatDate } from "../utils/dateUtils";
 
-const PostCard = ({ id, title, content, image_url, created_at, upvotes, showDetails }) => {
+const PostCard = ({ id, title, content, image_url, created_at, upvotes: initialUpvotes, showDetails }) => {
     // Init: Navigation Object
     const navigate = useNavigate();
+    const [upvotes, setUpvotes] = useState(initialUpvotes || 0);
+
+    // Sync local upvotes if initialUpvotes changes (e.g., after fetch)
+    useEffect(() => {
+        setUpvotes(initialUpvotes || 0);
+    }, [initialUpvotes]);
 
     // Function: Load Detail/Edit page when user clicks pet card
     const handleClick = () => {
@@ -27,7 +34,7 @@ const PostCard = ({ id, title, content, image_url, created_at, upvotes, showDeta
         if (error) {
             console.error("Failed to update upvotes in database:", error);
         } else {
-            console.log("Database successfully updated.");
+            setUpvotes(newUpvotes); // Update the button immediately
         }
     };
 
